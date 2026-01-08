@@ -1,0 +1,48 @@
+flowchart LR
+    %% Configuración de Estilos Profesionales Neutros
+    classDef cajaCero fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#f8fafc
+    classDef cicloBE fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#f8fafc
+    classDef cicloFE fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#f8fafc
+    classDef nota fill:#334155,stroke:#94a3b8,stroke-dasharray: 5 5,color:#cbd5e1
+
+    subgraph MEFH_FE_First [METODOLOGÍA FASÉTICA: VECTOR FRONTEND-FIRST]
+        direction LR
+
+        %% Sección Caja 0
+        subgraph S_Caja0 [Fase Inicial]
+            C0[CAJA 0: Contrato Visual]
+        end
+
+        %% Nota Aclaratoria vinculada a la salida de Caja 0
+        NotaC0{{Aclaración: El diseño validado en Caja 0 dicta la estructura técnica de ambas filas}}
+
+        %% Ciclo Backend
+        subgraph S_BE [Fila de Ejecución Backend]
+            direction LR
+            B1[F1: DB] --> B2[F2: Contratos]
+            B2 --> B3[F3: Lógica]
+            B3 --> B4[F4: API]
+        end
+
+        %% Ciclo Frontend
+        subgraph S_FE [Fila de Ejecución Frontend]
+            direction LR
+            F1[F1: Espejo] --> F2[F2: Comm]
+            F2 --> F3[F3: Hooks]
+            F3 --> F4[F4: Fusión]
+        end
+
+        %% Conectores Lógicos
+        C0 ===> NotaC0
+        NotaC0 ===> B1
+        NotaC0 ===> F1
+        
+        %% Sincronía de Espejo
+        B4 -.->|Sección 12.7: Sincronía de Espejo| F1
+    end
+
+    %% Asignación de Clases
+    class C0 cajaCero
+    class B1,B2,B3,B4 cicloBE
+    class F1,F2,F3,F4 cicloFE
+    class NotaC0 nota
